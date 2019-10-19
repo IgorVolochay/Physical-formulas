@@ -2,6 +2,7 @@ import math
 import time
 
 import numpy
+from fuzzywuzzy import fuzz
 
 while True:
 
@@ -11,5 +12,28 @@ while True:
         print("  Available formulas:")
         print("- The main\n")
 
-    if form == "The main" or "the main":
+    if fuzz.WRatio(form, "The main") >= 90:
+
         print("- Speed\n- Time\n- Distance")
+        answer = input()
+
+        if fuzz.WRatio(answer, "Speed") >= 90:
+            print("    Formula: v = S / t  (In meters per second)\n")
+            S = float(input("Enter value - S (in meters): "))
+            t = float(input("Enter value - t (in seconds): "))
+
+            print( "v = ", S / t, " meter(s) per second")
+        
+        if fuzz.WRatio(answer, "Time") >= 90:
+            print("    Formula: t = S / v (In seconds)")
+            S = float(input("Enter value - S (in meters): "))
+            v = float(input("Enter value - v (in meters per second): "))
+
+            print( "t = ", S / v, " second(s)")
+
+        if fuzz.WRatio(answer, "Distance") >= 90:
+            print("    Formula: S = v * t (In meters)")
+            v = float(input("Enter value - v (in meter per seconds): "))
+            t = float(input("Enter value - t (in seconds): "))
+
+            print("S = ", v * t, " meter(s)")
