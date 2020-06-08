@@ -2,10 +2,15 @@ import threading
 import tkinter as tk
 #import ttk
 
-from groups_of_formulas import Mechanical_Movement as MechMove
-
 from datetime import datetime
 from tkinter import *
+
+# Add files - here:
+from groups_of_formulas import (Mechanical_Movement as MechMove,
+                                The_force_of_gravity as TheForceOfGrav,
+                                Pressure,
+                                Gas_and_liquid_pressure as GasAndLiquidP,
+                                Work_and_Energy as WorkAndEnergy)
 
 class Main_Window(tk.Frame):
     def __init__(self, root): # Constructor
@@ -62,10 +67,10 @@ class Main_Window(tk.Frame):
 
         # Add the buttons to the frame
         Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=MechMove.start).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
+        Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2, command=TheForceOfGrav.start).pack(padx=120, pady=20)
+        Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2, command=Pressure.start).pack(padx=120, pady=20)
+        Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2, command=GasAndLiquidP.start).pack(padx=120, pady=20)
+        Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2, command=WorkAndEnergy.start).pack(padx=120, pady=20)
 
 if __name__ == "__main__":
     start_time = datetime.now() #Debug
