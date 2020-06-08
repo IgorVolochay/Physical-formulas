@@ -2,14 +2,14 @@ import threading
 import tkinter as tk
 #import ttk
 
-import Mechanical_Movement as MechMove
+from groups_of_formulas import Mechanical_Movement as MechMove
 
 from datetime import datetime
 from tkinter import *
 
 class Main_Window(tk.Frame):
     def __init__(self, root): # Constructor
-        print("class MainWindow time spent:", datetime.now() - start_time) # Debug
+        print("class MainWindow time spent:", datetime.now() - start_time) #Debug
 
         super().__init__(root)
 
@@ -23,9 +23,10 @@ class Main_Window(tk.Frame):
         root.geometry("600x610")
         root.resizable(False, False)
 
-        print("WindowCreation time spent:", datetime.now() - start_time) # Debug
+        print("WindowCreation time spent:", datetime.now() - start_time) #Debug
 
-        root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER).pack(fill=tk.X, pady=10)
+        root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER)
+        root.lbl.pack(fill=tk.X, pady=10)
 
         root.thread = threading.Thread(target=self.button()) # Call to button function using multithreading
         root.thread.start()
@@ -34,12 +35,16 @@ class Main_Window(tk.Frame):
         root.mainloop()
 
     def button(self):
-        frame = tk.Frame(root).pack(pady=0)
+        frame = tk.Frame(root)
+        frame.pack(pady=0)
+
         # Add a canvas in that frame
-        Can1 = tk.Canvas(frame, bg="White").pack(side=LEFT) 
+        Can1 = tk.Canvas(frame, bg="White")
+        Can1.pack(side=LEFT)
 
         # Link a scrollbar to the canvas
-        vsbar = tk.Scrollbar(frame, orient="vertical", command=Can1.yview).pack() 
+        vsbar = tk.Scrollbar(frame, orient="vertical", command=Can1.yview)
+        vsbar.pack()
         Can1.configure(yscrollcommand=vsbar.set)
 
         def _on_mousewheel(event): # Mouse scroll function
@@ -63,7 +68,7 @@ class Main_Window(tk.Frame):
         Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
 
 if __name__ == "__main__":
-    start_time = datetime.now() # Debug
+    start_time = datetime.now() #Debug
 
     root = tk.Tk()
     Main_Window(root)
