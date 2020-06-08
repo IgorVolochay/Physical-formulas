@@ -60,7 +60,7 @@ class MainWindow(tk.Frame):
         frame_buttons.bind("<Configure>", resize)
 
         # Add the buttons to the frame
-        Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=10)
+        Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
