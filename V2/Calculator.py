@@ -1,22 +1,23 @@
 import threading
 import tkinter as tk
-import math
 #import ttk
-from datetime import datetime
 
+import Mechanical_Movement as MechMove
+
+from datetime import datetime
 from tkinter import *
 
-class MainWindow(tk.Frame):
+class Main_Window(tk.Frame):
     def __init__(self, root):
         print("class MainWindow time spent:", datetime.now() - start_time) #Debug
 
         super().__init__(root)
 
-        self.thread = threading.Thread(target=self.WindowCreation(root))
+        self.thread = threading.Thread(target=self.Window_Creation(root))
         self.thread.start()
         self.thread.join()
 
-    def WindowCreation(self, root):
+    def Window_Creation(self, root):
         root.title("Physical Formulas")
         root.configure(background="White")
         root.geometry("600x610")
@@ -60,7 +61,7 @@ class MainWindow(tk.Frame):
         frame_buttons.bind("<Configure>", resize)
 
         # Add the buttons to the frame
-        Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
+        Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=MechMove.start).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
         Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
@@ -70,5 +71,5 @@ if __name__ == "__main__":
     start_time = datetime.now() #Debug
 
     root = tk.Tk()
-    MainWindow(root)
+    Main_Window(root)
     pass
