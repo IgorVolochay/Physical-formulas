@@ -4,7 +4,7 @@ import threading
 from tkinter import *
 
 class Mechanical_Movement(tk.Frame):  
-    def __init__(self, root):
+    def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
 
@@ -16,6 +16,6 @@ class Mechanical_Movement(tk.Frame):
 
         root.mainloop()
 
-def start():
+def start(): # Program start
     root = tk.Tk()
     Mechanical_Movement(root)

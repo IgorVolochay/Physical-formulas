@@ -8,12 +8,12 @@ from datetime import datetime
 from tkinter import *
 
 class Main_Window(tk.Frame):
-    def __init__(self, root):
-        print("class MainWindow time spent:", datetime.now() - start_time) #Debug
+    def __init__(self, root): # Constructor
+        print("class MainWindow time spent:", datetime.now() - start_time) # Debug
 
         super().__init__(root)
 
-        self.thread = threading.Thread(target=self.Window_Creation(root))
+        self.thread = threading.Thread(target=self.Window_Creation(root)) # Call to the Window_Creation function using multithreading
         self.thread.start()
         self.thread.join()
 
@@ -23,31 +23,26 @@ class Main_Window(tk.Frame):
         root.geometry("600x610")
         root.resizable(False, False)
 
-        print("WindowCreation time spent:", datetime.now() - start_time) #Debug
+        print("WindowCreation time spent:", datetime.now() - start_time) # Debug
 
-        root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER)
-        root.lbl.pack(fill=tk.X, pady=10)
+        root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER).pack(fill=tk.X, pady=10)
 
-        root.thread = threading.Thread(target=self.button())
+        root.thread = threading.Thread(target=self.button()) # Call to button function using multithreading
         root.thread.start()
         root.thread.join()
 
         root.mainloop()
 
     def button(self):
-        frame = tk.Frame(root)
-        frame.pack(pady=0)
-
+        frame = tk.Frame(root).pack(pady=0)
         # Add a canvas in that frame
-        Can1 = tk.Canvas(frame, bg="White")
-        Can1.pack(side=LEFT)
+        Can1 = tk.Canvas(frame, bg="White").pack(side=LEFT) 
 
         # Link a scrollbar to the canvas
-        vsbar = tk.Scrollbar(frame, orient="vertical", command=Can1.yview)
-        vsbar.pack()
+        vsbar = tk.Scrollbar(frame, orient="vertical", command=Can1.yview).pack() 
         Can1.configure(yscrollcommand=vsbar.set)
 
-        def _on_mousewheel(event):
+        def _on_mousewheel(event): # Mouse scroll function
             Can1.yview_scroll(int(-1*(event.delta/120)), "units")
         Can1.bind_all("<MouseWheel>", _on_mousewheel)
 
@@ -68,7 +63,7 @@ class Main_Window(tk.Frame):
         Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2).pack(padx=120, pady=20)
 
 if __name__ == "__main__":
-    start_time = datetime.now() #Debug
+    start_time = datetime.now() # Debug
 
     root = tk.Tk()
     Main_Window(root)
