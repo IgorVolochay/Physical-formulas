@@ -5,13 +5,6 @@ import tkinter as tk
 from datetime import datetime
 from tkinter import *
 
-# Add files - here:
-from groups_of_formulas import (Mechanical_Movement as MechMove,
-                                The_force_of_gravity as TheForceOfGrav,
-                                Pressure,
-                                Gas_and_liquid_pressure as GasAndLiquidP,
-                                Work_and_Energy as WorkAndEnergy)
-
 class Main_Window(tk.Frame):
     def __init__(self, root): # Constructor
         print("class MainWindow time spent:", datetime.now() - start_time) #Debug
@@ -33,13 +26,13 @@ class Main_Window(tk.Frame):
         root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER)
         root.lbl.pack(fill=tk.X, pady=10)
 
-        root.thread = threading.Thread(target=self.button()) # Call to button function using multithreading
+        root.thread = threading.Thread(target=self.Action_Field_And_Buttons()) # Call to button function using multithreading
         root.thread.start()
         root.thread.join()
 
         root.mainloop()
 
-    def button(self):
+    def Action_Field_And_Buttons(self):
         frame = tk.Frame(root)
         frame.pack(pady=0)
 
@@ -52,9 +45,9 @@ class Main_Window(tk.Frame):
         vsbar.pack()
         Can1.configure(yscrollcommand=vsbar.set)
 
-        def _on_mousewheel(event): # Mouse scroll function
+        def on_mousewheel(event): # Mouse scroll function
             Can1.yview_scroll(int(-1*(event.delta/120)), "units")
-        Can1.bind_all("<MouseWheel>", _on_mousewheel)
+        Can1.bind_all("<MouseWheel>", on_mousewheel)
 
         # Create a frame to contain the buttons
         frame_buttons = tk.Frame(Can1, bg="White", relief=tk.GROOVE)
@@ -65,12 +58,39 @@ class Main_Window(tk.Frame):
             Can1.configure(scrollregion=Can1.bbox("all"), width=600, height=550)
         frame_buttons.bind("<Configure>", resize)
 
-        # Add the buttons to the frame
-        Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=MechMove.start).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2, command=TheForceOfGrav.start).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2, command=Pressure.start).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2, command=GasAndLiquidP.start).pack(padx=120, pady=20)
-        Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2, command=WorkAndEnergy.start).pack(padx=120, pady=20)
+        def Create_Buttons_Using_Multithreading():
+
+            #Add files and buttons - here:
+
+            def _Mech_Move():
+                from groups_of_formulas import Mechanical_Movement
+                Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=Mechanical_Movement.start).pack(padx=120, pady=20)
+
+            def _The_Force_Of_Grav():
+                from groups_of_formulas import The_force_of_gravity
+                Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2, command=The_force_of_gravity.start).pack(padx=120, pady=20)
+
+            def _Pressure():
+                from groups_of_formulas import Pressure
+                Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2, command=Pressure.start).pack(padx=120, pady=20)
+
+            def _Gas_And_Liquid_Pressure():
+                from groups_of_formulas import Gas_and_liquid_pressure
+                Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2, command=Gas_and_liquid_pressure.start).pack(padx=120, pady=20)
+
+            def _Work_and_Energy():
+                from groups_of_formulas import Work_and_Energy
+                Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2, command=Work_and_Energy.start).pack(padx=120, pady=20)
+
+            #When you create the function, add it here:
+            List_Of_Buttons = [_Mech_Move(), _The_Force_Of_Grav(), _Pressure(), _Gas_And_Liquid_Pressure(), _Work_and_Energy()]
+
+            #Distribution of button creation on different threads:
+            for Name_Button in range(len(List_Of_Buttons)):
+                thread = threading.Thread(target=List_Of_Buttons[Name_Button])
+                thread.start()
+
+        Create_Buttons_Using_Multithreading()
 
 if __name__ == "__main__":
     start_time = datetime.now() #Debug
