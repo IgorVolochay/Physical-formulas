@@ -3,7 +3,7 @@ import threading
 
 from tkinter import *
 
-class The_force_of_gravity(tk.Frame):  
+class The_force_of_gravity(Frame):  
     def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
@@ -17,5 +17,5 @@ class The_force_of_gravity(tk.Frame):
         root.mainloop()
 
 def start(): # Program start
-    root = tk.Tk()
+    root = Tk()
     The_force_of_gravity(root)

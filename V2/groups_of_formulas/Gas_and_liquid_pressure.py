@@ -3,7 +3,7 @@ import threading
 
 from tkinter import *
 
-class Gas_and_liquid_pressure(tk.Frame):  
+class Gas_and_liquid_pressure(Frame):  
     def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
@@ -17,5 +17,5 @@ class Gas_and_liquid_pressure(tk.Frame):
         root.mainloop()
 
 def start(): # Program start
-    root = tk.Tk()
+    root = Tk()
     Gas_and_liquid_pressure(root)

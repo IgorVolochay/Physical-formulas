@@ -5,7 +5,7 @@ import tkinter as tk
 from datetime import datetime
 from tkinter import *
 
-class Main_Window(tk.Frame):
+class Main_Window(Frame):
     def __init__(self, root): # Constructor
         print("class MainWindow time spent:", datetime.now() - start_time) #Debug
 
@@ -23,8 +23,8 @@ class Main_Window(tk.Frame):
 
         print("WindowCreation time spent:", datetime.now() - start_time) #Debug
 
-        root.lbl = tk.Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=tk.CENTER)
-        root.lbl.pack(fill=tk.X, pady=10)
+        root.lbl = Label(root, text="Выберете группу", font=("Arial", 20), bg="White", justify=CENTER)
+        root.lbl.pack(fill=X, pady=10)
 
         root.thread = threading.Thread(target=self.Action_Field_And_Buttons()) # Call to button function using multithreading
         root.thread.start()
@@ -33,15 +33,15 @@ class Main_Window(tk.Frame):
         root.mainloop()
 
     def Action_Field_And_Buttons(self):
-        frame = tk.Frame(root)
+        frame = Frame(root)
         frame.pack(pady=0)
 
         # Add a canvas in that frame
-        Can1 = tk.Canvas(frame, bg="White")
+        Can1 = Canvas(frame, bg="White")
         Can1.pack(side=LEFT)
 
         # Link a scrollbar to the canvas
-        vsbar = tk.Scrollbar(frame, orient="vertical", command=Can1.yview)
+        vsbar = Scrollbar(frame, orient="vertical", command=Can1.yview)
         vsbar.pack()
         Can1.configure(yscrollcommand=vsbar.set)
 
@@ -50,7 +50,7 @@ class Main_Window(tk.Frame):
         Can1.bind_all("<MouseWheel>", on_mousewheel)
 
         # Create a frame to contain the buttons
-        frame_buttons = tk.Frame(Can1, bg="White", relief=tk.GROOVE)
+        frame_buttons = Frame(Can1, bg="White", relief=GROOVE)
         Can1.create_window((5,5), window=frame_buttons)
 
         # Bind the buttons frame to a function that fixes the Canvas size
@@ -64,23 +64,23 @@ class Main_Window(tk.Frame):
 
             def _Mech_Move():
                 from groups_of_formulas import Mechanical_Movement
-                Button_TheMain = tk.Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=Mechanical_Movement.start).pack(padx=120, pady=20)
+                Button_TheMain = Button(frame_buttons, text="Механическое движение", font=("Arial", 15), width=32, height=2, command=Mechanical_Movement.start).pack(padx=120, pady=20)
 
             def _The_Force_Of_Grav():
                 from groups_of_formulas import The_force_of_gravity
-                Button_TheMain = tk.Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2, command=The_force_of_gravity.start).pack(padx=120, pady=20)
+                Button_TheMain = Button(frame_buttons, text="Сила тяжести", font=("Arial", 15), width=32, height=2, command=The_force_of_gravity.start).pack(padx=120, pady=20)
 
             def _Pressure():
                 from groups_of_formulas import Pressure
-                Button_TheMain = tk.Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2, command=Pressure.start).pack(padx=120, pady=20)
+                Button_TheMain = Button(frame_buttons, text="Давление", font=("Arial", 15), width=32, height=2, command=Pressure.start).pack(padx=120, pady=20)
 
             def _Gas_And_Liquid_Pressure():
                 from groups_of_formulas import Gas_and_liquid_pressure
-                Button_TheMain = tk.Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2, command=Gas_and_liquid_pressure.start).pack(padx=120, pady=20)
+                Button_TheMain = Button(frame_buttons, text="Давление газов и жидкостей", font=("Arial", 15), width=32, height=2, command=Gas_and_liquid_pressure.start).pack(padx=120, pady=20)
 
             def _Work_and_Energy():
                 from groups_of_formulas import Work_and_Energy
-                Button_TheMain = tk.Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2, command=Work_and_Energy.start).pack(padx=120, pady=20)
+                Button_TheMain = Button(frame_buttons, text="Работа и Энергия", font=("Arial", 15), width=32, height=2, command=Work_and_Energy.start).pack(padx=120, pady=20)
 
             #When you create the function, add it here:
             List_Of_Buttons = [_Mech_Move(), _The_Force_Of_Grav(), _Pressure(), _Gas_And_Liquid_Pressure(), _Work_and_Energy()]
@@ -95,6 +95,6 @@ class Main_Window(tk.Frame):
 if __name__ == "__main__":
     start_time = datetime.now() #Debug
 
-    root = tk.Tk()
+    root = Tk()
     Main_Window(root)
     pass

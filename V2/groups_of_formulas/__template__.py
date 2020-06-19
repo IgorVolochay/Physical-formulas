@@ -3,13 +3,13 @@ import threading
 
 from tkinter import *
 
-class Mechanical_Movement(Frame):  
+class __template__(Frame):  
     def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
 
     def Window_Creation(self, root):
-        root.title("Mechanical movement")
+        root.title("__template__")
         root.configure(background="White")
         root.geometry("600x450")
         root.resizable(False, False)
@@ -47,11 +47,23 @@ class Mechanical_Movement(Frame):
         def Create_buttons():
             choice = IntVar()
 
-            def Speed_time_distance():
-                CheckBut1 = Radiobutton(frame_buttons, text='Скорость, \nрасстояние, время', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
+            def some_button1():
+                CheckBut1 = Radiobutton(frame_buttons, text='Some button', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
                 CheckBut1.pack()
 
-            List_of_buttons = [Speed_time_distance()]
+            def some_button2():
+                CheckBut1 = Radiobutton(frame_buttons, text='Some button', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=1)
+                CheckBut1.pack(pady=10)
+
+            def some_button3():
+                CheckBut1 = Radiobutton(frame_buttons, text='Some button', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=2)
+                CheckBut1.pack(pady=10)
+
+            def some_button4():
+                CheckBut1 = Radiobutton(frame_buttons, text='Some button', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=3)
+                CheckBut1.pack(pady=10)
+
+            List_of_buttons = [some_button1(), some_button2(), some_button3(), some_button4()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])
@@ -59,11 +71,9 @@ class Mechanical_Movement(Frame):
 
         Create_buttons()
 
-
 def start(): # Program start
     root = Tk()
-    Mechanical_Movement(root)
-    
+    __template__(root)
+
 if __name__ == '__main__': # DeBug. To run the program, without Calculator.py
     start()
-    

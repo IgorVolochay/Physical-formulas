@@ -3,7 +3,7 @@ import threading
 
 from tkinter import *
 
-class Work_and_Energy(tk.Frame):  
+class Work_and_Energy(Frame):  
     def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
@@ -17,5 +17,5 @@ class Work_and_Energy(tk.Frame):
         root.mainloop()
 
 def start(): # Program start
-    root = tk.Tk()
+    root = Tk()
     Work_and_Energy(root)
