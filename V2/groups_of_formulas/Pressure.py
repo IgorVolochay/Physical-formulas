@@ -47,11 +47,11 @@ class Pressure(Frame):
         def Create_buttons():
             choice = IntVar()
 
-            def some_button1():
+            def Pressure_power_area():
                 CheckBut1 = Radiobutton(frame_buttons, text='Давление,\nсила, площадь', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
                 CheckBut1.pack()
 
-            List_of_buttons = [some_button1()]
+            List_of_buttons = [Pressure_power_area()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])

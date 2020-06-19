@@ -47,19 +47,19 @@ class The_force_of_gravity(Frame):
         def Create_buttons():
             choice = IntVar()
 
-            def some_button1():
+            def Force_of_gravity_Mass_Gravity():
                 CheckBut1 = Radiobutton(frame_buttons, text='Сила тяжести,\n масса, гравитация', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
                 CheckBut1.pack()
 
-            def some_button2():
+            def Gravity_mass_weight():
                 CheckBut1 = Radiobutton(frame_buttons, text='Вес, \nмасса, гравитация', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=1)
                 CheckBut1.pack(pady=10)
 
-            def some_button3():
+            def Weight_Volume_Density():
                 CheckBut1 = Radiobutton(frame_buttons, text='Плотность,\nобъём, масса', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=2)
                 CheckBut1.pack(pady=10)
 
-            List_of_buttons = [some_button1(), some_button2(), some_button3()]
+            List_of_buttons = [Force_of_gravity_Mass_Gravity(), Gravity_mass_weight(), Weight_Volume_Density()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])

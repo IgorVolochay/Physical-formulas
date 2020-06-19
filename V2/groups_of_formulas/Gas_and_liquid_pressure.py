@@ -47,15 +47,15 @@ class Gas_and_liquid_pressure(Frame):
         def Create_buttons():
             choice = IntVar()
 
-            def some_button1():
+            def Fluid_pressure():
                 CheckBut1 = Radiobutton(frame_buttons, text='Дав. жидкости', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
                 CheckBut1.pack()
 
-            def some_button2():
+            def Archimedes_law():
                 CheckBut1 = Radiobutton(frame_buttons, text='Закон Архимеда', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=1)
                 CheckBut1.pack(pady=10)
 
-            List_of_buttons = [some_button1(), some_button2()]
+            List_of_buttons = [Fluid_pressure(), Archimedes_law()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])

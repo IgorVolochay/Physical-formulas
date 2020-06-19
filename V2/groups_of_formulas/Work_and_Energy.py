@@ -47,27 +47,27 @@ class Work_and_Energy(Frame):
         def Create_buttons():
             choice = IntVar()
 
-            def some_button1():
+            def Work_Distance_Strength():
                 CheckBut1 = Radiobutton(frame_buttons, text='Работа,\nрасстояние, сила', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
                 CheckBut1.pack()
 
-            def some_button2():
+            def Efficiency():
                 CheckBut1 = Radiobutton(frame_buttons, text='КПД', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=1)
                 CheckBut1.pack(pady=10)
 
-            def some_button3():
+            def Potential_energy_Mass_Height():
                 CheckBut1 = Radiobutton(frame_buttons, text='П. энергия,\nмасса, высота', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=2)
                 CheckBut1.pack(pady=10)
 
-            def some_button4():
+            def Kinetic_energy_Mass_Height():
                 CheckBut1 = Radiobutton(frame_buttons, text='К. энергия,\nмасса, скорость', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=3)
                 CheckBut1.pack(pady=10)
 
-            def some_button5():
-                CheckBut1 = Radiobutton(frame_buttons, text='Мощность,\nработа, время', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=3)
+            def Power_work_time():
+                CheckBut1 = Radiobutton(frame_buttons, text='Мощность,\nработа, время', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=4)
                 CheckBut1.pack(pady=10)
 
-            List_of_buttons = [some_button1(), some_button2(), some_button3(), some_button4(), some_button5()]
+            List_of_buttons = [Work_Distance_Strength(), Efficiency(), Potential_energy_Mass_Height(), Kinetic_energy_Mass_Height(), Power_work_time()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])
