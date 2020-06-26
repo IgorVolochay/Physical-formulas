@@ -45,20 +45,29 @@ class Mechanical_Movement(Frame):
         frame_buttons.bind("<Configure>", resize)
 
         def Create_buttons():
-            choice = IntVar()
 
             def Speed_time_distance():
-                CheckBut1 = Radiobutton(frame_buttons, text='Скорость, \nрасстояние, время', width=18, height=3, font=("Arial", 15), background="#fafafa", indicatoron=0, variable=choice, value=0)
-                CheckBut1.pack()
+                
+                def Selection_check():
+                    if choice.get() == 0:
+                        Speed_time_distance_area()
+
+                choice = IntVar()
+                choice.set(-1)
+
+                CheckBut1 = Radiobutton(frame_buttons, text='Скорость, \nрасстояние, время', width=18, height=3, font=("Arial", 15), background="#ffffff", indicatoron=0, variable=choice, value=0, command=Selection_check).pack()
 
             List_of_buttons = [Speed_time_distance()]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])
                 thread.start()
+            
+        def Speed_time_distance_area():
+            print("DeBug")
+            pass
 
         Create_buttons()
-
 
 def start(): # Program start
     root = Tk()
