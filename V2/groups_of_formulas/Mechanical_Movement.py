@@ -2,6 +2,7 @@ import tkinter as tk
 import threading
 
 from tkinter import *
+from tkinter import ttk
 
 class Mechanical_Movement(Frame):  
     def __init__(self, root): # Constructor
@@ -64,7 +65,34 @@ class Mechanical_Movement(Frame):
                 thread.start()
             
         def Speed_time_distance_area():
-            print("DeBug")
+            def calculator():
+                pass
+            lbl = Label(root, text="ʋ = S / t\nS = ʋ * t\nt = S / ʋ", font=("Arial", 17), background="#ffffff")
+            lbl.place(x=370, y=20)
+
+            lbl = Label(root, text="Введите известные значения:", font=("Arial", 13), fg="gray", background="#ffffff")
+            lbl.place(x=300, y=120)
+
+            inputS = StringVar()
+            lblS = Label(root, text="S (в метрах)", font=("Arial", 10), background="#ffffff")
+            lblS.place(x=272, y=169)
+            entry_S = ttk.Entry(root, textvariable=inputS)
+            entry_S.place(x=355, y=170)
+
+            inputt = StringVar()
+            lblS = Label(root, text="t (в секундах)", font=("Arial", 10), background="#ffffff")
+            lblS.place(x=264, y=209)
+            entry_t = ttk.Entry(root, textvariable=inputt)
+            entry_t.place(x=355, y=210)
+
+            inputv = StringVar()
+            lblS = Label(root, text="ʋ (в метрах/секунда)", font=("Arial", 10), background="#ffffff")
+            lblS.place(x=222, y=249)
+            entry_v = ttk.Entry(root, textvariable=inputv)
+            entry_v.place(x=355, y=250)
+
+            ButtonEnter = ttk.Button(root, text="=", command=calculator)
+            ButtonEnter.place(x=381, y=290)
             pass
 
         Create_buttons()

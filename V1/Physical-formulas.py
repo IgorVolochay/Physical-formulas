@@ -2,7 +2,7 @@ import math
 import tkinter as tk
 
 from tkinter import *
-import ttk
+from tkinter import ttk
 
 class Main(tk.Frame):
 
