@@ -8,7 +8,7 @@ class Mechanical_Movement(Frame):
     def __init__(self, root): # Constructor
         super().__init__(root)
         self.Window_Creation(root)
-
+        
     def Window_Creation(self, root):
         root.title("Mechanical movement")
         root.configure(background="White")
@@ -16,7 +16,7 @@ class Mechanical_Movement(Frame):
         root.resizable(False, False)
 
         self.Scroll_panel(root)
-
+        
         root.mainloop()
 
     def Scroll_panel(self, root):
@@ -46,19 +46,17 @@ class Mechanical_Movement(Frame):
         frame_buttons.bind("<Configure>", resize)
 
         def Create_buttons():
-
-            def Speed_time_distance():
+            def Speed_time_distance(frame_buttons):
                 
                 def Selection_check():
                     if choice.get() == 0:
                         Speed_time_distance_area()
 
                 choice = IntVar()
-                choice.set(-1)
 
                 CheckBut1 = Radiobutton(frame_buttons, text='Скорость, \nрасстояние, время', width=18, height=3, font=("Arial", 15), background="#ffffff", indicatoron=0, variable=choice, value=0, command=Selection_check).pack()
 
-            List_of_buttons = [Speed_time_distance()]
+            List_of_buttons = [Speed_time_distance(frame_buttons)]
 
             for Name_Button in range(len(List_of_buttons)):
                 thread = threading.Thread(target=List_of_buttons[Name_Button])
@@ -94,7 +92,6 @@ class Mechanical_Movement(Frame):
             ButtonEnter = ttk.Button(root, text="=", command=calculator)
             ButtonEnter.place(x=381, y=290)
             pass
-
         Create_buttons()
 
 def start(): # Program start
@@ -103,4 +100,3 @@ def start(): # Program start
     
 if __name__ == '__main__': # DeBug. To run the program, without Calculator.py
     start()
-    
