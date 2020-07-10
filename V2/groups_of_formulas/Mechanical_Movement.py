@@ -64,6 +64,30 @@ class Mechanical_Movement(Frame):
             
         def Speed_time_distance_area():
             def calculator():
+                try:
+                    S = float(input_S.get())
+                except:
+                    S = None
+                try:
+                    t = float(input_t.get())
+                except:
+                    t = None
+                try:
+                    v = float(input_v.get())
+                except:
+                    v = None
+
+                if v == None:
+                    v = S / t
+                    input_v.set(v)
+
+                if t == None:
+                    t = S / v
+                    input_t.set(t)
+
+                if S == None:
+                    S = t * v
+                    input_S.set(S)
                 pass
             lbl = Label(root, text="ʋ = S / t\nS = ʋ * t\nt = S / ʋ", font=("Arial", 17), background="#ffffff")
             lbl.place(x=370, y=20)
@@ -71,22 +95,22 @@ class Mechanical_Movement(Frame):
             lbl = Label(root, text="Введите известные значения:", font=("Arial", 13), fg="gray", background="#ffffff")
             lbl.place(x=300, y=120)
 
-            inputS = StringVar()
+            input_S = StringVar()
             lblS = Label(root, text="S (в метрах)", font=("Arial", 10), background="#ffffff")
             lblS.place(x=272, y=169)
-            entry_S = ttk.Entry(root, textvariable=inputS)
+            entry_S = ttk.Entry(root, textvariable=input_S)
             entry_S.place(x=355, y=170)
 
-            inputt = StringVar()
+            input_t = StringVar()
             lblS = Label(root, text="t (в секундах)", font=("Arial", 10), background="#ffffff")
             lblS.place(x=264, y=209)
-            entry_t = ttk.Entry(root, textvariable=inputt)
+            entry_t = ttk.Entry(root, textvariable=input_t)
             entry_t.place(x=355, y=210)
 
-            inputv = StringVar()
+            input_v = StringVar()
             lblS = Label(root, text="ʋ (в метрах/секунда)", font=("Arial", 10), background="#ffffff")
             lblS.place(x=222, y=249)
-            entry_v = ttk.Entry(root, textvariable=inputv)
+            entry_v = ttk.Entry(root, textvariable=input_v)
             entry_v.place(x=355, y=250)
 
             ButtonEnter = ttk.Button(root, text="=", command=calculator)
